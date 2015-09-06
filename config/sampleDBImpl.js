@@ -1,7 +1,7 @@
 // config/passport.js
 
 // load all the things we need
-var LocalStrategy   = require('passport-local').Strategy;
+var FacebookStrategy   = require('passport-facebook').Strategy;
 
 // load up the user model
 var mysql = require('mysql');
@@ -20,16 +20,16 @@ module.exports = function(passport) {
     // passport needs ability to serialize and unserialize users out of session
 
     // used to serialize the user for the session
-    passport.serializeUser(function(user, done) {
-        done(null, user.id);
-    });
+    // passport.serializeUser(function(user, done) {
+    //     done(null, user.id);
+    // });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
-            done(err, rows[0]);
-        });
-    });
+    // passport.deserializeUser(function(id, done) {
+    //     connection.query("SELECT * FROM users WHERE id = ? ",[id], function(err, rows){
+    //         done(err, rows[0]);
+    //     });
+    // });
 
     // =========================================================================
     // LOCAL SIGNUP ============================================================
@@ -38,8 +38,7 @@ module.exports = function(passport) {
     // by default, if there was no name, it would just be called 'local'
 
     passport.use(
-        'local-signup',
-        new LocalStrategy({
+        new facebookStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField : 'username',
             passwordField : 'password',

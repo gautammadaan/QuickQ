@@ -1,16 +1,18 @@
-// app/routes.js
-module.exports = function(app, passport) {
+var authController = require("auth");
+
+module.exports = function(app) {
 
 	// =====================================
-	// LOGIN ===============================
+	// SignUp ==============================
 	// =====================================
-	// Use as sample
-	app.get('/login', function(req, res) {
-		// call some controller method here to do stuff
-		res.send(<SomeObject>);
+	app.post('/signup', function(req, res) {
+		authController.signup(req, res);
 	});
 
-	app.post('/blah', function(req, res) {
-
+	// =====================================
+	// LogIn ===============================
+	// =====================================
+	app.post('/login', function(req, res) {
+		authController.login(req, res);
 	});
 }

@@ -1,5 +1,5 @@
 /**
- * Created by barrett on 8/28/14.
+ * Created by Gautam.
  */
 
 var mysql = require('mysql');

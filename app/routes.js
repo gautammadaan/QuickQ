@@ -1,4 +1,4 @@
-var authController = require("auth");
+var authController = require("../controller/auth");
 
 module.exports = function(app) {
 

@@ -1,3 +1,6 @@
+### Master Branch should only be merged after code review.
+### Develop branch should be updated via pull request. No direct pushes
+
 # Complete Guide to Node Authentication with MySQL
 
 Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication with MongoDB

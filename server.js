@@ -6,7 +6,7 @@ var express  = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var app      = express();
-var port     = process.env.PORT || 8080;
+var port     = process.env.PORT || 3000;
 
 
 // set up our express application

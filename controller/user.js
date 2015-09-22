@@ -1,5 +1,6 @@
 var fbUtil = require("../utils/facebook")
-,   userModel = require("../model/user");
+,   userModel = require("../model/user")
+,   async = require("async");
 
 
 /**
@@ -13,11 +14,11 @@ function login(req, res) {
         else if(data)
             res.send(data);
         else{
-            userModel.save(req.user, function(err) {
+            userModel.save(req.user, function(err, data) {
                 if(err)
                     res.send(err + "User could not be saved.");
                 else
-                    res.send(req.user);
+                    res.send(data);
             });
         }
     });
@@ -28,15 +29,15 @@ function login(req, res) {
 * retun the user object
 **/
 function getUserDetails(req, res) {
-    userModel.getUserByFbId(req.fbId, function(err, data){
-        if (err) 
-            res.send(err)
+    userModel.getUserByfbId(req.fbId, function(err, data){
+        if (err)
+            res.send(err + "User details not found");
         else
             res.send(data);
-    });
+    })
 }
 
 module.exports = {
     signup: signup,
-    getUser: getUserDetails
+    getUserDetails: getUserDetails
 };

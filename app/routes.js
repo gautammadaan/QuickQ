@@ -2,13 +2,7 @@ var userController = require("../controller/user")
 ,	feedbackCntl = require("../controller/feedback")
 ,	questionCntl = require("../controller/question")
 ,	tagController = require("../controller/hashtag")
-,	fbutil = require("../utils/facebook")
-
-,	mysql = require('mysql')
-,	bcrypt = require('bcrypt-nodejs')
-,	dbconfig = require('../config/database')
-,	connection = mysql.createConnection(dbconfig.connection);
-
+,	fbutil = require("../utils/facebook");
 
 /**
 * private
@@ -26,7 +20,7 @@ function __isRequestValid(req, callback) {
 
 module.exports = function(app) {
 
-	// LogIn ===============================
+/* /Login */
 	app.post('/user/login', function(req, res) {
 		__isRequestValid(req, userController.login(req, res));
 	});

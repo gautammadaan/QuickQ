@@ -41,6 +41,8 @@ module.exports = function(app) {
 		__isRequestValid(req, questionCntl.answerQuestion(req, res));
 	});	
 
+/* Something for chatting, donno what??  */
+
 /* /feedback 	*/
 	// Send feedback ========================
 	app.post('/feedback/send', function(req, res) {

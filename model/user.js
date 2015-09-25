@@ -104,9 +104,40 @@ function doesUserExist(fbId, callback) {
     __getUserIdForFbId(fbId, callback);
 }
 
+/**
+* private 
+* @param tags, callback
+* Filter users to send question notifications to
+**/
+function __filterUsersForTag(users, callback) {
+    // callback with correct set of users
+}
+
+/**
+* @param tags, callback
+* returns users who can answer question with specific tags
+**/
+function getUsersForTag(tag, callback) {
+    // get all users from database associated with that tag
+    var users = {};
+    // filter users based on an intelligent algo, to send notification to
+    // find papers suggesting some research so user remians engaged
+    __filterUsersForTag(users, callback)
+}
+
+/**
+* @param deviceId, callback
+* Return user with specific deviceID
+**/
+function getUserByDeviceId(deviceID, callback) {
+
+}
+
 
 module.exports = {
     save: save,
+    doesUserExist: doesUserExist,
     getUserByfbId: getUserByfbId,
-    doesUserExist: doesUserExist
+    getUsersForTag: getUsersForTag,
+    getUserByDeviceId: getUserByDeviceId
 }

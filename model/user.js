@@ -64,7 +64,7 @@ function __getUserIdForFbId(fbId, callback) {
 * @param fbId, callback
 * get all user details for fbId
 **/
-function getUserByfbId(fbId, callback) {
+function getUserByFbId(fbId, callback) {
     var user = {}
     ,   userId;
     async.series([
@@ -134,10 +134,12 @@ function getUserByDeviceId(deviceID, callback) {
 }
 
 
+getQoCForUser
+
 module.exports = {
     save: save,
     doesUserExist: doesUserExist,
-    getUserByfbId: getUserByfbId,
+    getUserByFbId: getUserByFbId,
     getUsersForTag: getUsersForTag,
     getUserByDeviceId: getUserByDeviceId
 }

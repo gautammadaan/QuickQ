@@ -1,0 +1,1 @@
+getTagScoresForUser(user, callback)

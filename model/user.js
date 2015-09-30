@@ -134,12 +134,27 @@ function getUserByDeviceId(deviceID, callback) {
 }
 
 
-getQoCForUser
+/**
+* @param feedback, callback
+* get the Quality of Conversation of the user
+**/
+function getQoCForUser(feedback, callback) {
+
+}
+
+/**
+* @param feedback, callback
+* Update the Qulatiy of Conversation of the user
+**/
+function updateQoC(feedback, callback) {
+
+}
 
 module.exports = {
     save: save,
     doesUserExist: doesUserExist,
     getUserByFbId: getUserByFbId,
     getUsersForTag: getUsersForTag,
-    getUserByDeviceId: getUserByDeviceId
+    getUserByDeviceId: getUserByDeviceId,
+    getQoCForUser: getQoCForUser
 }

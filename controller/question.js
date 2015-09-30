@@ -55,7 +55,7 @@ function __canQuestionBeAnswered(question, callback) {
 * return the user object
 **/
 function __connectUsersForQuestion(question, callback) {
-    //**TODO: should we save chat local or on server??
+    //** TODO: should we save chat local or on server??
     userModel.getUserByDeviceId(question.askedBy, callback);
 }
 

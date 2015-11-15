@@ -1,0 +1,14 @@
+{ 
+	"name": "Sparshith", 
+	"password": "pass", 
+	"firstName": "Sparshith",
+	"lastName": "Gowda",
+	"addressOne": "1600 Villa Street",
+	"addressTwo": "177",
+	"city": "Mountain View",
+	"state": "Califronia",
+	"country": "India",
+	"zip": "94041",
+	"email": "sparsh.pro@gmail.com",
+	"admin": false 
+}

@@ -14,6 +14,7 @@ var User   = require('./app/models/user'); // get our mongoose model
 // controllers
 //==================================================================
 var userController = require('./app/controller/user');
+var tagController = require('./app/controller/tag');
 // =================================================================
 // configuration ===================================================
 // =================================================================
@@ -43,6 +44,8 @@ app.get('/users', function(req, res) {
 app.get('/', function(req, res) {
 	res.send('Hello! The API is at http://localhost:' + port + '/api');
 });
+
+app.get('/tags', tagController.getTags);
 
 // ---------------------------------------------------------
 // get an instance of the router for api routes

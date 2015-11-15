@@ -1,21 +1,43 @@
-### Master Branch should only be merged after code review.
-### Develop branch should be updated via pull request. No direct pushes
+<<<<<<< HEAD
+# Node Token Authentication
 
-# Complete Guide to Node Authentication with MySQL
+This repo uses JSON Web Tokens and the [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) package to implement token based authentication on a simple Node.js API.
 
-Code for the entire scotch.io tutorial series: Complete Guide to Node Authentication with MongoDB
+This is a starting point to demonstrate the method of authentication by verifying a token using Express route middleware.
 
-Current version database is ported to MySQL
+## Requirements
 
-We will be using Passport to authenticate users locally, 
+- node and npm
 
-## Instructions
+## Usage
 
-If you would like to download the code and try it for yourself:
+1. Clone the repo: `git clone git@github.com:scotch-io/node-token-authentication`
+2. Install dependencies: `npm install`
+3. Change SECRET in `config.js`
+4. Add your own MongoDB database to `config.js`
+5. Start the server: `node server.js`
+6. Create sample user by visiting: `http://localhost:8080/setup`
 
-1. Clone the repo: `git clone git@github.com:manjeshpv/node-express-passport-mysql.git`
-1. Install packages: `npm install`
-1. Edit the database configuration: `config/database.js`
-1. Create the database schema: `node scripts/create_database.js`
-1. Launch: `node server.js`
-1. Visit in your browser at: `http://localhost:8080`
+Once everything is set up, we can begin to use our app by creating and verifying tokens.
+
+### Getting a Token
+
+Send a `POST` request to `http://localhost:8080/api/authenticate` with test user parameters as `x-www-form-urlencoded`. 
+
+```
+  {
+    name: 'Nick Cerminara',
+    password: 'password'
+  }
+```
+
+### Verifying a Token and Listing Users
+
+Send a `GET` request to `http://localhost:8080/api/users` with a header parameter of `x-access-token` and the token.
+
+You can also send the token as a URL parameter: `http://localhost:8080/api/users?token=YOUR_TOKEN_HERE`
+
+Or you can send the token as a POST parameter of `token`.
+=======
+# Json-Web-Token-Example
+>>>>>>> 962bbd769a92606eb87296f5a839b5c1cc91c031

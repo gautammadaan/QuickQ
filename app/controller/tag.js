@@ -1,6 +1,6 @@
 var Tag = require('../models/tag');
 
-exports.getTags = function(req, res) {
+function getTags(req, res) {
     // create a sample user
     Tag.find(function(err, tags) {
         if (err) throw err;
@@ -9,3 +9,7 @@ exports.getTags = function(req, res) {
         res.json({ tags: tags});
     });
 };
+
+module.exports = {
+    getTags: getTags
+}

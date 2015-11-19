@@ -19,6 +19,9 @@ module.exports = function(app, express) {
     // http://localhost:8080/authenticate
     app.post('/authenticate', userController.signin);
 
+    // facebook authentication
+    app.post('/fb/authenticate', userController.fbSignin);
+
     app.post('/signup', userController.signup);
 
     // basic route (http://localhost:8080)
@@ -29,7 +32,7 @@ module.exports = function(app, express) {
     // ---------------------------------------------------------
     // get an instance of the router for api routes
     // ---------------------------------------------------------
-    var apiRoutes = express.Router(); 
+    var apiRoutes = express.Router();
 
     // ---------------------------------------------------------
     // route middleware to authenticate and check token

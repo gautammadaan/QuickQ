@@ -97,7 +97,7 @@ function signin(req, res, isFBSignIn) {
             res.json({ success: false, message: 'Authentication failed. User not found.' });
         }
         else{
-            // check password matches only for non-fb sign ins
+            // check password matches only for non-fb signins
             if(!isFBSignIn){
                 if (user.password !== req.body.password) {
                     res.json({success: false, message: 'Authentication failed. Wrong password.'});
@@ -134,8 +134,20 @@ function fbSignin(req, res) {
     });
 }
 
+/**
+ * get the list of users to answer for a particular set of tags
+ * @param tags
+ * @param callback
+ */
+function getUsersForTag(tags, callback){
+    /** TODO: Algorithm to get users who have expertise in certain tags **/
+    var userIds = {};
+    /** TODO: return user Ids **/
+}
+
 module.exports = {
     signup: signup,
     signin: signin,
-    fbSignin: fbSignin
+    fbSignin: fbSignin,
+    getUsersForTag: getUsersForTag
 }

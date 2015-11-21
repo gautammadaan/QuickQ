@@ -8,7 +8,9 @@ var User   = require('./models/user'); // get our mongoose model
 // controllers
 //==================================================================
 var userController = require('./controller/user')
-,   tagController = require('./controller/tag');
+    ,tagController = require('./controller/tag')
+    ,quesController = require('./controller/question')
+    ,feedbkController = require('./controller/feedback');
 
 module.exports = function(app, express) {
 
@@ -23,11 +25,6 @@ module.exports = function(app, express) {
     app.post('/fb/authenticate', userController.fbSignin);
 
     app.post('/signup', userController.signup);
-
-    // basic route (http://localhost:8080)
-    app.get('/', function(req, res) {
-        res.send('Hello! The API is at http://localhost:' + port + '/api');
-    });
 
     // ---------------------------------------------------------
     // get an instance of the router for api routes
@@ -83,10 +80,46 @@ module.exports = function(app, express) {
         });
     });
 
-    app.get('/tags', tagController.getTags);
+    //*********** Tags *****************//
+
+    apiRoutes.get('/tags', tagController.getTags);
 
     apiRoutes.get('/check', function(req, res) {
         res.json(req.decoded);
+    });
+
+
+    //*********** Questions *****************//
+    // Ask question ========================
+    apiRoutes.post('/question/ask', function(req, res) {
+        quesController.askQuestion(req, res);
+    });
+
+    // Answer question ======================
+    apiRoutes.post('/question/answer', function(req, res) {
+        quesController.answerQuestion(req, res);
+    });
+
+    // Connect Two users
+    apiRoutes.post('/question/connectUsers', function(req, res) {
+        quesController.connect(req, res);
+    });
+
+    //****************** feedback ***************//
+    // Send feedback for Questioner ========================
+    apiRoutes.post('/feedback/questioner', function(req, res){
+        feedbkController.sendFeebackQuestioner(req, res);
+    })
+
+
+    // Send feedback for respondent ========================
+    apiRoutes.post('/feedback/respondent', function(req, res) {
+        feedbkController.sendFeedbackRespondent(req, res);
+    });
+
+    // Get feedback scores ===================
+    apiRoutes.post('/feedback/scores', function(req, res) {
+        feedbkController.getScores(req, res);
     });
 
     app.use('/api', apiRoutes);

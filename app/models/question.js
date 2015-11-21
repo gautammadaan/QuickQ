@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 // set up a mongoose model
 module.exports = mongoose.model('Question', new Schema({
     isAnswered: Boolean,
-    askerId: String,
+    askedById: String,
     resolverIds: [String],
     text: String
 }));

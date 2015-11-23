@@ -55,6 +55,11 @@ function __doesUserExist(email, callback){
  * @param res
  */
 function signup(req, res) {
+    //null checks
+    if(!req.body.firstName || !req.body.email || !req.body.country ||!req.body.password){
+        res.status(302).send({message: 'Missing fields'});
+        return;
+    }
     // if user exists then login
     __doesUserExist(req.body.email, function(err, user){
         if(err || user === null) {

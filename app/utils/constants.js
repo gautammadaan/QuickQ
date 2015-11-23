@@ -3,6 +3,6 @@ var quesStatus = {
     "answered": 2
 }
 
-mdule.exports = {
+module.exports = {
     quesStatus: quesStatus
 }

@@ -9,6 +9,6 @@ var Schema = mongoose.Schema;
 module.exports = mongoose.model('Feedback', new Schema({
     userId: String,
     tagId: String,
-    score: Integer,
-    level: Integer
+    score: Number,
+    level: Number
 }));

@@ -1,6 +1,6 @@
 module.exports = {
 
 	'secret': 'ilovescotchyscotch',
-	'database': 'mongodb://localhost:27017/cric'
+	'database': 'mongodb://localhost:27017/quickq'
 
 };

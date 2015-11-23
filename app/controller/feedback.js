@@ -1,6 +1,6 @@
 var async = require("async")
-    ,   user = require("./model/user")
-    ,   feedbackModel = require("./model/feedback");
+    ,   user = require("../models/user")
+    ,   feedbackModel = require("../models/feedback");
 
 /**
  * save feedback of the person who asked the question

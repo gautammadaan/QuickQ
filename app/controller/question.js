@@ -1,7 +1,7 @@
-var Question = require('./models/question')
-    ,constants = require('./utils/constants')
-    ,userController = require('user')
-    ,notifyController = require('notification');
+var Question = require('../models/question')
+    ,constants = require('../utils/constants')
+    ,userController = require('./user')
+    ,notifyController = require('./notification');
 
 var async = require("async");
 

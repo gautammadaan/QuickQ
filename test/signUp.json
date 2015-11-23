@@ -1,6 +1,6 @@
-{ 
-	"name": "Sparshith", 
-	"password": "pass", 
+{
+	"name": "Sparshith",
+	"password": "pass",
 	"firstName": "Sparshith",
 	"lastName": "Gowda",
 	"addressOne": "1600 Villa Street",
@@ -9,6 +9,6 @@
 	"state": "Califronia",
 	"country": "India",
 	"zip": "94041",
-	"email": "sparsh.pro@gmail.com",
-	"admin": false 
+	"email": "sparsh.pro@gmail",
+	"admin": false
 }

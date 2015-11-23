@@ -42,6 +42,7 @@ function __doesUserExist(email, callback){
     User.findOne({
         email: email
     }, function(err, user){
+        console.log(user);
         if(err)
             callback(err, null);
         else

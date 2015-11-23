@@ -81,12 +81,15 @@ function signup(req, res) {
  * @param user
  * @private
  */
-function __getToken(req, user, callback) {
+function __sendToken(req, user) {
     var token = jwt.sign(user, req.app.get('superSecret'), {
         expiresInMinutes: 1440 // expires in 24 hours
     });
-
-    return callback(null, token);
+    res.status(200).send({
+        success: true,
+        message: 'Enjoy your token!',
+        token: token
+    });
 }
 
 /**
@@ -94,28 +97,19 @@ function __getToken(req, user, callback) {
  * @param req
  * @param res
  */
-function signin(req, res, isFBSignIn) {
+function signin(req, res) {
 // if user exists then signIn
     __doesUserExist(req.body.email, function(err, user) {
-
         if (err || user === null) {
             res.json({ success: false, message: 'Authentication failed. User not found.' });
         }
         else{
-            // check password matches only for non-fb signins
-            if(!isFBSignIn){
-                if (user.password !== req.body.password) {
-                    res.json({success: false, message: 'Authentication failed. Wrong password.'});
-                }
+            // check password matches
+            if (user.password !== req.body.password) {
+                res.json({success: false, message: 'Authentication failed. Wrong password.'});
             }
             else {
-                __getToken(req, user, function (err, token) {
-                    res.json({
-                        success: true,
-                        message: 'Enjoy your token!',
-                        token: token
-                    });
-                });
+                __sendToken(req, user);
             }
         }
     });
@@ -127,14 +121,22 @@ function signin(req, res, isFBSignIn) {
  * @param res
  */
 function fbSignin(req, res) {
-
     // Is it a valid fb user
     fb.checkAccessToken(req, function(err, isValid){
         if(err){
             res.status(400).send("Invalid Facebook login request");
         }
         else {
-            signin(req, res, true);
+            // if no user then signUp using FB else sign in
+            __doesUserExist(req.body.email, function (err, user) {
+                if (user && err !== null)
+                    __sendToken(req, user);
+                else {
+                    // Creating pass for fb sign up.
+                    req.body.password = ((parseFloat(req.body.fbId)) * 3);
+                    signup(req, res);
+                }
+            });
         }
     });
 }

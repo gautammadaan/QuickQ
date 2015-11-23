@@ -1,4 +1,4 @@
-// http://localhost:8080/api/authenticate
+// http://localhost:8080/authenticate
 {
   "name":"Sparshith",
   "password":"pass"

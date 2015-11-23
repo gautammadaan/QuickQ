@@ -61,6 +61,12 @@ function signup(req, res) {
         res.status(302).send({message: 'Missing fields'});
         return;
     }
+
+    if(!__validateEmail(req.body.email)){
+        res.status(302).send({message: 'Enter valid email id'});
+        return;
+    }
+    console.log(__validateEmail(req.body.email));
     // if user exists then login
     __doesUserExist(req.body.email, function(err, user){
         if(err || user === null) {
@@ -74,6 +80,11 @@ function signup(req, res) {
         else
             res.status(302).send({ message: 'User already exists'});
     });
+}
+
+function __validateEmail(email) {
+    var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+    return re.test(email);
 }
 
 /**

@@ -80,7 +80,7 @@ module.exports = function(app, express) {
         });
     });
 
-    //*********** Tags *****************//
+    //*********** Tags ***************************//
 
     apiRoutes.get('/tags/list', tagController.getTags);
 
@@ -92,6 +92,7 @@ module.exports = function(app, express) {
 
 
     //*********** Questions *****************//
+
     // Ask question ========================
     apiRoutes.post('/question/ask', function(req, res) {
         quesController.askQuestion(req, res);
@@ -108,6 +109,7 @@ module.exports = function(app, express) {
     });
 
     //****************** feedback ***************//
+
     // Send feedback for Questioner ========================
     apiRoutes.post('/feedback/questioner', function(req, res){
         feedbkController.sendFeebackQuestioner(req, res);

@@ -82,7 +82,9 @@ module.exports = function(app, express) {
 
     //*********** Tags ***************************//
 
-    apiRoutes.get('/tags', tagController.getTags);
+    apiRoutes.get('/tags/list', tagController.getTags);
+
+    apiRoutes.post('/tags/add', tagController.addTag);
 
     apiRoutes.get('/check', function(req, res) {
         res.json(req.decoded);
@@ -123,6 +125,7 @@ module.exports = function(app, express) {
     apiRoutes.post('/feedback/scores', function(req, res) {
         feedbkController.getScores(req, res);
     });
+
 
     app.use('/api', apiRoutes);
 }

@@ -2,10 +2,12 @@
   "name": "node-token-authentication",
   "main": "server.js",
   "dependencies": {
-    "jsonwebtoken": "~1.1.2",
-    "express": "~4.9.8",
+    "async": "^1.5.0",
     "body-parser": "~1.9.2",
+    "express": "~4.9.8",
+    "jsonwebtoken": "~1.1.2",
     "mongoose": "~3.8.19",
-    "morgan": "~1.5.0"
+    "morgan": "~1.5.0",
+    "request": "^2.67.0"
   }
 }

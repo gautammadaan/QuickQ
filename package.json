@@ -8,6 +8,7 @@
     "jsonwebtoken": "~1.1.2",
     "mongoose": "~3.8.19",
     "morgan": "~1.5.0",
-    "request": "^2.67.0"
+    "request": "^2.67.0",
+    "twilio": "^2.5.2"
   }
 }

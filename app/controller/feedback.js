@@ -35,7 +35,7 @@ function sendFeedbackRespondent(req, res) {
             }
         ], function done(err, results) {
             if (err)
-                res.status(500).send({ message: "Could not save feedback of respondent"});
+                res.status(500).send({ err: err, message: "Could not save feedback of respondent"});
             else
                 res.status(200).send({ message: "Feedback for respondent has been saved"});
         }
@@ -76,7 +76,7 @@ function getScores(req, res) {
         }
     ], function done(err, results) {
         if (err)
-            res.status(500).send({ message: "Could not retrieve user feedback"});
+            res.status(500).send({ err:err, message: "Could not retrieve user feedback"});
         else
             res.status(200).send({ message: "Success, User scores available",
                                     result: results });

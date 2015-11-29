@@ -20,7 +20,6 @@ module.exports = function(app, express) {
 
     // http://localhost:8080/authenticate
     app.post('/authenticate', userController.signin);
-
     // facebook authentication
     app.post('/fb/authenticate', userController.fbSignin);
 
@@ -94,17 +93,17 @@ module.exports = function(app, express) {
     //*********** Questions *****************//
 
     // Ask question ========================
-    apiRoutes.post('/question/ask', function(req, res) {
+    apiRoutes.post('/question/ask', function(req, res){
         quesController.askQuestion(req, res);
     });
 
     // Answer question ======================
-    apiRoutes.post('/question/answer', function(req, res) {
+    apiRoutes.post('/question/answer', function(req, res){
         quesController.answerQuestion(req, res);
     });
 
-    // Connect Two users
-    apiRoutes.post('/question/connectUsers', function(req, res) {
+    // Connect Two users ====================
+    apiRoutes.post('/question/connectUsers', function(req, res){
         quesController.connect(req, res);
     });
 

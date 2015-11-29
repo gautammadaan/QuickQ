@@ -12,6 +12,7 @@ function __createUser(req, callback){
     // create a sample user
     var user = new User({
         name: req.body.name,
+        deviceId: req.body.deviceId,
         password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -42,7 +43,6 @@ function __doesUserExist(email, callback){
     User.findOne({
         email: email
     }, function(err, user){
-        console.log(user);
         if(err)
             callback(err, null);
         else
@@ -160,8 +160,10 @@ function fbSignin(req, res) {
  */
 function getUsersForTag(tags, callback){
     /** TODO: Algorithm to get users who have expertise in certain tags **/
-    var userIds = {};
-    /** TODO: return user Ids **/
+    //var users = {};
+    /** TODO: return users **/
+    __doesUserExist("sparsh.pro@gmail.com", callback);
+
 }
 
 module.exports = {

@@ -9,6 +9,8 @@ var Schema = mongoose.Schema;
 module.exports = mongoose.model('Question', new Schema({
     isAnswered: Boolean,
     askedById: String,
+    notifiedTo: [String],
+    volunteersId: [String],
     resolverIds: [String],
     text: String
 }));

@@ -3,8 +3,10 @@ var Tag = require('../models/tag');
 function getTags(req, res) {
     // Find tags
     Tag.find(function(err, tags) {
-        if (err) throw err;
-        res.json({ tags: tags});
+        if (err)
+            res.status(500).send({err: err, message: "Could not find the tag"});
+        else
+            res.status(200).send({ tags: tags});
     });
 }
 
@@ -15,7 +17,7 @@ function addTag(req, res) {
     }
     Tag.findOne({name: req.body.name}, function(err, tag){
        if(err){
-           res.status(500).send({message: "An error occured"});
+           res.status(500).send({err: err, message: "Error while finding tag"});
            return;
        }
        if(tag){
@@ -26,10 +28,10 @@ function addTag(req, res) {
            name: req.body.name
         });
         tag.save(function(err) {
-            if (err) throw err;
-
-            console.log('Tag saved successfully');
-            res.status(500).send({ message: 'Tag saved successfully' });
+            if (err)
+                res.status(500).send({ err: err, message: 'Unable to save tag' });
+            else
+                res.status(200).send({err: err, message:"Tag saved successfully"});
         });
     });
 }

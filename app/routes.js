@@ -89,12 +89,11 @@ module.exports = function(app, express) {
         res.json(req.decoded);
     });
 
-
     //*********** Questions *****************//
 
     // Ask question ========================
     apiRoutes.post('/question/ask', function(req, res){
-        quesController.askQuestion(req, res);
+        quesController.askQuestion(req, res, sns);
     });
 
     // Answer question ======================
@@ -113,7 +112,6 @@ module.exports = function(app, express) {
     apiRoutes.post('/feedback/questioner', function(req, res){
         feedbkController.sendFeebackQuestioner(req, res);
     })
-
 
     // Send feedback for respondent ========================
     apiRoutes.post('/feedback/respondent', function(req, res) {

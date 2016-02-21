@@ -5,7 +5,7 @@
 var Question = require('../models/question')
     ,constants = require('../utils/constants')
     ,userController = require('./user')
-    ,notifyController = require('./notification');
+    ,notifyController = require('./notification')(sns);
 
 var async = require("async");
 
@@ -50,7 +50,7 @@ function __updateQuestion(question, callback){
  * @param req
  * @param res
  */
-function askQuestion(req, res){
+function askQuestion(req, res, sns){
     var question = req.body.question
         ,   tags = question.tags;
 
@@ -68,7 +68,7 @@ function askQuestion(req, res){
             question.notifiedTo = respondents;
             __updateQuestion(question, callback);
 
-            notifyController.notifyUsers(respondents, callback);
+            notifyController.notifyUsers(question, respondents, callback);
         }
 
     ], function done(err, results) {

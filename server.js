@@ -6,7 +6,8 @@ var express 	= require('express')
 ,	bodyParser  = require('body-parser')
 ,	morgan      = require('morgan')
 ,	mongoose    = require('mongoose')
-,	config = require('./config'); // get our config file
+,   aws         = require('aws-sdk')
+,	config = require('app/config/config.js'); // get our config file
 
 
 // =================================================================
@@ -24,8 +25,10 @@ app.use(bodyParser.json());
 app.use(morgan('dev'));
 
 // =================================================================
-// routes ==========================================================
+// Configure AWS ===================================================
 // =================================================================
+aws.config.update(config.aws);
+var sns = aws.SNS();
 
 // Your accountSid and authToken from twilio.com/user/account
 var accountSid = "AC8b0f982035fd3f6c94fe38b58cdd87db";
@@ -48,7 +51,7 @@ client.makeCall({
 
 
 
-require('./app/routes.js')(app, express); // load our routes and pass in our app and fully configured passport
+require('./app/routes.js')(app, express, sns); // load our routes and pass in our app and fully configured passport
 
 // =================================================================
 // start the server ================================================

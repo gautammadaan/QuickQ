@@ -12,7 +12,8 @@ function __createUser(req, callback){
     // create a sample user
     var user = new User({
         name: req.body.name,
-        deviceId: req.body.deviceId,
+        snsEndpoint: req.body.endpointArn,
+        deviceType: req.body.deviceType,
         password: req.body.password,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
@@ -88,7 +89,7 @@ function __validateEmail(email) {
 }
 
 /**
- * create Json Web Token to authenticate requests
+ * create JSON Web Token to authenticate requests
  * @param req
  * @param user
  * @private
